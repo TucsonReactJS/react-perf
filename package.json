@@ -1,0 +1,29 @@
+{
+  "name": "react-perf",
+  "version": "1.0.0",
+  "description": "Describe react-perf here",
+  "private": true,
+  "scripts": {
+    "build": "nwb build",
+    "clean": "nwb clean",
+    "start": "nwb serve",
+    "test": "nwb test",
+    "test:watch": "nwb test --server"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "lodash.assign": "^4.0.6",
+    "react": "0.14.x",
+    "react-dom": "0.14.x",
+    "react-redux": "^4.4.1",
+    "react-router": "^2.0.1",
+    "redux": "^3.3.1",
+    "redux-thunk": "^2.0.1"
+  },
+  "devDependencies": {
+    "nwb": "0.8.x"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": ""
+}
