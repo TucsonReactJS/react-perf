@@ -24,6 +24,7 @@
     "react-web-animation": "0.0.9",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
+    "shortid": "^2.2.4",
     "snabbt.js": "^0.6.4"
   },
   "devDependencies": {

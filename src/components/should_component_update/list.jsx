@@ -16,6 +16,9 @@ const styles = {
 }
 
 
+// http://babeljs.io/docs/plugins/transform-react-constant-elements/
+const header = <h2>Colors</h2>;
+
 export class List extends React.Component {
     constructor() {
         super();
@@ -31,7 +34,7 @@ export class List extends React.Component {
         const {list,listItem} = styles;
 
         return (<div>
-            <h2>Colors</h2>
+            {header}
             <ul style={list}>
                 {colors.map(( c, idx ) => <li key={idx} onClick={setCurrentColor.bind(this,c)}
                                               style={listItem}>{c}</li>)}

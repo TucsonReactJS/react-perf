@@ -9,6 +9,9 @@ const styles = {
     }
 }
 
+// http://babeljs.io/docs/plugins/transform-react-constant-elements/
+const button = <button role="submit">Add</button>;
+
 export class Form extends Component {
     constructor() {
         super();
@@ -45,7 +48,7 @@ export class Form extends Component {
 
         return (<form onSubmit={onAddColor} style={styles.form}>
             <input name="color" value={currentColorValue} onChange={onAddingColorChange} type="text"/>
-            <button role="submit">Add</button>
+            {button}
             <button onClick={onAddManyColors}>Add 100</button>
             <Flash/>
         </form>);
