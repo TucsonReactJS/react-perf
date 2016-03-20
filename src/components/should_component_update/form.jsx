@@ -10,7 +10,21 @@ const styles = {
 }
 
 // http://babeljs.io/docs/plugins/transform-react-constant-elements/
-const button = <button role="submit">Add</button>;
+// http://babeljs.io/docs/plugins/transform-react-inline-elements/
+const button = {
+    $$typeof: Symbol.for('react.element'),
+    type: 'button',
+    key: null,
+    ref: null,
+    props: {
+        role: "submit",
+        children: [
+            "Add"
+        ]
+    },
+    _owner: null
+};
+
 
 export class Form extends Component {
     constructor() {
