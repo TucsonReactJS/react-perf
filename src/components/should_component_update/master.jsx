@@ -3,6 +3,7 @@ import debug from 'debug';
 import Flash from '../flash';
 import Detail from './detail';
 import Form from './form';
+import List from './list';
 
 const d = debug('should_component_update:master');
 const randomInt = ( max ) => Math.round(Math.random() * max);
@@ -36,17 +37,6 @@ export class Master extends Component {
                 paddingTop: '0px',
                 marginTop: '12px',
                 overflowY: 'auto'
-            },
-            list: {
-                listStyle: 'none',
-                padding: 0,
-                margin: "0 auto"
-            },
-            listItem: {
-                width: "100%",
-                padding: '6px',
-                borderBottom: "1px solid #ddd",
-                cursor: 'pointer'
             }
         }
     }
@@ -98,17 +88,13 @@ export class Master extends Component {
     render() {
 
         // get state
-        const {currentColor,colors,currentColorValue} = this.state;
-        const {container,detail,list,listContainer, innerDetail, listItem,form} = this.getStyle();
+        const {currentColor,colors} = this.state;
+        const {container,listContainer} = this.getStyle();
         const {onAddColor,setCurrentColor, onAddManyColors} = this;
 
         return (<div style={container}>
             <div style={listContainer}>
-                <h2>Colors</h2>
-                <ul style={list}>
-                    {colors.map(( c, idx ) => <li key={idx} onClick={setCurrentColor.bind(this,c)}
-                                                  style={listItem}>{c}</li>)}
-                </ul>
+                <List setCurrentColor={setCurrentColor} colors={colors}/>
                 <Form onAddColor={onAddColor} onAddManyColors={onAddManyColors}/>
             </div>
             <Detail currentColor={currentColor}/>
