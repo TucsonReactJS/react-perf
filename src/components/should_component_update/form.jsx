@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react'
 import Flash from '../flash';
+import shallowCompare from 'react-addons-shallow-compare';
 
 const styles = {
     form: {
@@ -18,6 +19,10 @@ export class Form extends Component {
 
         this.onAddColor = this.onAddColor.bind(this);
         this.onAddingColorChange = this.onAddingColorChange.bind(this);
+    }
+
+    shouldComponentUpdate( nextProps, nextState ) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     onAddColor( e ) {
