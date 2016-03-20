@@ -32,6 +32,7 @@ export class Flash extends Component {
 
     render() {
         return <div ref="flash" className="flash">
+            Rendered
         </div>
     }
 }

@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import debug from 'debug';
 import Flash from '../flash';
+import Detail from './detail';
 
 const d = debug('should_component_update:master');
 const randomInt = ( max ) => Math.round(Math.random() * max);
@@ -28,19 +29,6 @@ export class Master extends Component {
                 width: '100vw',
                 height: '100vh',
                 display: 'flex'
-            },
-            detail: {
-                width: '80vw',
-                height: '100vh',
-                backgroundColor: "blue"
-            },
-            innerDetail: {
-                width: '100%',
-                height: '100%',
-                backgroundColor: this.state.currentColor,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
             },
             listContainer: {
                 width: '20vw',
@@ -136,11 +124,7 @@ export class Master extends Component {
                     <button onClick={onAddManyColors}>Add 100</button>
                 </form>
             </div>
-            <div style={detail}>
-                <div style={innerDetail}>
-                    <span>{currentColor}</span>
-                </div>
-            </div>
+            <Detail currentColor={currentColor}/>
             <Flash/>
         </div>);
     }
