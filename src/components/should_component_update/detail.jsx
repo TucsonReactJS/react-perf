@@ -19,6 +19,10 @@ const styles = {
 };
 export class Detail extends Component {
 
+    shouldComponentUpdate( nextProps, nextState ) {
+        return nextProps.currentColor !== this.props.currentColor
+    }
+
     render() {
 
         const {currentColor} = this.props;
