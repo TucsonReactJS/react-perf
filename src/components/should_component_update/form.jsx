@@ -22,7 +22,7 @@ const button = {
             "Add"
         ]
     },
-    _owner: null
+    _owner: null //The owner is the component that created a ReactElement https://facebook.github.io/react/blog/2015/02/24/streamlining-react-elements.html#owner
 };
 
 
