@@ -73,7 +73,9 @@ export class Master extends Component {
 
     onAddColor( e ) {
         e.preventDefault();
-        this.setState({ colors: [...this.state.colors, this.state.currentColorValue], currentColorValue: "" });
+        if ( this.state.currentColorValue ) {
+            this.setState({ colors: [...this.state.colors, this.state.currentColorValue], currentColorValue: "" });
+        }
     }
 
     onAddingColorChange( e ) {
