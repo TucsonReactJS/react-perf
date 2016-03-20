@@ -1,4 +1,4 @@
-import React,{Component} from "react"
+import React,{Component,PropTypes} from "react"
 import Flash from '../flash';
 import assign from 'lodash.assign';
 
@@ -34,6 +34,10 @@ export class Detail extends Component {
             <Flash/>
         </div>;
     }
+}
+
+Detail.propTypes = {
+    currentColor: React.PropTypes.string.isRequired
 }
 
 export default Detail;

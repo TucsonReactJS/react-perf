@@ -29,6 +29,7 @@ export class List extends React.Component {
         const {setCurrentColor} = this;
         const {colors} = this.props;
         const {list,listItem} = styles;
+
         return (<div>
             <h2>Colors</h2>
             <ul style={list}>
