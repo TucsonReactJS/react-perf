@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import debug from 'debug';
 import Flash from '../flash';
 import Detail from './detail';
+import Form from './form';
 
 const d = debug('should_component_update:master');
 const randomInt = ( max ) => Math.round(Math.random() * max);
@@ -12,14 +13,12 @@ export class Master extends Component {
 
         this.state = {
             colors: [],
-            currentColorValue: "",
             currentColor: `rgb(${randomInt(255)},${randomInt(255)},${randomInt(255)})`
         };
 
         // bind handlers
         this.setCurrentColor = this.setCurrentColor.bind(this);
         this.onAddColor = this.onAddColor.bind(this);
-        this.onAddingColorChange = this.onAddingColorChange.bind(this);
         this.onAddManyColors = this.onAddManyColors.bind(this);
     }
 
@@ -48,9 +47,6 @@ export class Master extends Component {
                 padding: '6px',
                 borderBottom: "1px solid #ddd",
                 cursor: 'pointer'
-            },
-            form: {
-                paddingTop: '12px'
             }
         }
     }
@@ -59,15 +55,10 @@ export class Master extends Component {
         this.setState({ currentColor: c });
     }
 
-    onAddColor( e ) {
-        e.preventDefault();
-        if ( this.state.currentColorValue ) {
-            this.setState({ colors: [...this.state.colors, this.state.currentColorValue], currentColorValue: "" });
+    onAddColor( value ) {
+        if ( value ) {
+            this.setState({ colors: [...this.state.colors, value] });
         }
-    }
-
-    onAddingColorChange( e ) {
-        this.setState({ currentColorValue: e.target.value });
     }
 
     onAddManyColors() {
@@ -109,7 +100,7 @@ export class Master extends Component {
         // get state
         const {currentColor,colors,currentColorValue} = this.state;
         const {container,detail,list,listContainer, innerDetail, listItem,form} = this.getStyle();
-        const {onAddColor,onAddingColorChange,setCurrentColor, onAddManyColors} = this;
+        const {onAddColor,setCurrentColor, onAddManyColors} = this;
 
         return (<div style={container}>
             <div style={listContainer}>
@@ -118,11 +109,7 @@ export class Master extends Component {
                     {colors.map(( c, idx ) => <li key={idx} onClick={setCurrentColor.bind(this,c)}
                                                   style={listItem}>{c}</li>)}
                 </ul>
-                <form onSubmit={onAddColor} style={form}>
-                    <input name="color" value={currentColorValue} onChange={onAddingColorChange} type="text"/>
-                    <button role="submit">Add</button>
-                    <button onClick={onAddManyColors}>Add 100</button>
-                </form>
+                <Form onAddColor={onAddColor} onAddManyColors={onAddManyColors}/>
             </div>
             <Detail currentColor={currentColor}/>
             <Flash/>
